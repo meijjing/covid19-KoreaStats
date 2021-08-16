@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COVID19-Stats</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+      <div class="logo">
+        <img src="img/logo.png" alt="" />
+        <p>COVID-19 STATS</p>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="">HOME</a></li>
+          <li><a href="">ABOUT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- main -->
+    <main>
+      <div class="domestic-report">
+        <section class="domestic">
+          <h2>국내 발생현황</h2>
+          <p class="divider"></p>
+
+          <div class="domestic-stats">
+            <div class="total-cases">
+              <div class="title">확진자 수</div>
+              <div class="value">0</div>
+              <div class="new-value">+0</div>
+            </div>
+
+            <div class="recovered">
+              <div class="title">완치자 수</div>
+              <div class="value">0</div>
+              <div class="new-value">+0</div>
+            </div>
+
+            <div class="critical">
+              <div class="title">격리자 수</div>
+              <div class="value">0</div>
+              <div class="new-value">+0</div>
+            </div>
+
+            <div class="deaths">
+              <div class="title">사망자 수</div>
+              <div class="value">0</div>
+              <div class="new-value">+0</div>
+            </div>
+          </div>
+          <!-- domestic-stats -->
+
+          <div class="chart">
+            <canvas id="domestic_stats_chart"></canvas>
+          </div>
+        </section>
+        <!-- domestic -->
+      </div>
+      <!-- domestic-report -->
+
+      <div class="region-report">
+        <section class="region">
+          <h2>지역별 발생현황</h2>
+          <p class="divider"></p>
+
+          <div id="region-table" border="1">
+            <div class="thead">
+              <div class="name">지역</div>
+              <div class="region_total">확진자 수<span>(증가 수)</span></div>
+              <div class="region_recovered">완치자 수</div>
+              <div class="region_critical">격리자 수</div>
+              <div class="region_death">사망자 수</div>
+            </div>
+
+            <div class="tbody">
+              <div id="region-name" class="name"></div>
+              <div id="region-total" class="region_total"></div>
+              <div id="region-recovered" class="region_recovered"></div>
+              <div id="region-critical" class="region_critical"></div>
+              <div id="region-death" class="region_death"></div>
+            </div>
+          </div>
+
+          <div class="chart">
+            <canvas id="axes_line_chart"></canvas>
+          </div>
+        </section>
+        <!-- region -->
+      </div>
+      <!-- region-report -->
+    </main>
+
+    <!-- footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="copyright">
+          <p>Copyright © 2021 Mejjing</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- geoplugin -->
+    <script
+      language="JavaScript"
+      src="http://www.geoplugin.net/javascript.gp"
+      type="text/javascript"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Js -->
+    <!-- <script src="js/regions.js"></script> -->
+    <script src="js/script.js"></script>
+    <script src="js/data.js"></script>
+    <script type="text/javascript" src="js/xmlToJSON.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pretty-print-json@1.1.0/dist/pretty-print-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+  </body>
+</html>

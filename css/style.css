@@ -1,0 +1,437 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+/* Common styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-size: 16px;
+  font-family: 'Nanum Gothic';
+}
+
+.cfixed:before,
+.container:before,
+.cfixed:after,
+.container:after {
+  display: block;
+  content: " ";
+  line-height: 0;
+  clear: both;
+}
+
+.hide {
+  display: none;
+}
+
+.fadeIn {
+  animation: fade .5s ease-in-out;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ------------------------------------------------*/
+/*                     header                      */
+/* ------------------------------------------------*/
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  height: 60px;
+  margin: 0 auto;
+  background: rgb(255, 255, 255);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+
+}
+
+.logo img {
+  width: 50px;
+  margin-right: 15px;
+}
+
+.logo p {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ff591d;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li:last-child {
+  padding-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ff591d;
+  padding: 10px;
+  font-weight: 700;
+}
+
+/* ------------------------------------------------*/
+/*                      main                       */
+/* ------------------------------------------------*/
+main {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+/* domestic-report */
+.domestic-report {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, .9)), url(../img/bg.jpg) no-repeat center center;
+  background-size: cover;
+  padding: 80px 10px;
+}
+
+.domestic h2,
+.region h2 {
+  text-align: center;
+  font-size: 1.875rem;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.divider {
+  display: block;
+  width: 150px;
+  margin: 0 auto;
+  background: #ff591d;
+  height: 2px;
+  margin-bottom: 60px;
+}
+
+.domestic-stats {
+  margin: 0 auto;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-cases,
+.recovered,
+.critical,
+.deaths {
+  height: 100%;
+}
+
+.title {
+  font-size: 1.25rem;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.total-cases {
+  color: #fff
+}
+
+.recovered {
+  color: #03b98c;
+}
+
+.critical {
+  color: #e4b004;
+}
+
+.deaths {
+  color: #d63a2f;
+}
+
+.new-value {
+  font-size: 1.25rem
+}
+
+/* chart */
+.chart {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+/* scroll bar */
+/* 스크롤바 전체 */
+.region-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* 스크롤 바 여백 */
+.region-list::-webkit-scrollbar-track {
+  background: #6a149b;
+}
+
+/* 스크롤 바 막대 */
+.region-list::-webkit-scrollbar-thumb {
+  background: #be64f1;
+}
+
+.region-list::-webkit-scrollbar-thumb:hover {
+  opacity: .7;
+}
+
+/* region-report */
+.region-report {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, .9)), url(../img/bg1.png) no-repeat center center;
+  background-size: cover;
+  padding: 80px 10px;
+}
+
+/* region-table */
+#region-table {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#region-table .name {
+  width: 21%;
+}
+
+#region-table .region_total {
+  width: 25%
+}
+
+#region-table .region_recovered,
+#region-table .region_critical,
+#region-table .region_death {
+  width: 18%;
+}
+
+#region-table .thead {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#region-table .thead div {
+  border-right: 1px solid rgba(58, 58, 58, 0.6);
+  border-bottom: 2px solid rgba(58, 58, 58, 0.6);
+  text-align: center;
+  padding: 18px 0;
+  font-weight: 700;
+}
+
+#region-table .thead div:last-child {
+  border-right: none;
+}
+
+#region-table .tbody {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+#region-table .tbody div {
+  text-align: center;
+}
+
+#region-table .tbody div p {
+  border-right: 1px solid rgba(58, 58, 58, 0.6);
+  padding: 10px 0;
+}
+
+#region-table .tbody div:last-child p {
+  border-right: none;
+}
+
+#region-table .tbody div p:nth-child(2n) {
+  background-color : rgba(58, 58, 58, 0.6);
+}
+
+#region-table .region_recovered {
+  color: #03b98c;
+}
+
+#region-table .region_critical {
+  color: #e4b004;
+}
+
+#region-table .region_death {
+  color: #d63a2f;
+}
+
+
+#region-table .region_total span {
+  margin-left: 3px;
+  font-size: 0.75rem
+}
+
+
+
+
+
+
+
+
+/* ------------------------------------------------*/
+/*                     footer                      */
+/* ------------------------------------------------*/
+footer {
+  width: 100%;
+  max-width: 1200px;
+  height: 40px;
+  margin: 0 auto;
+  background: #ff591d;
+}
+
+.footer-container {
+  height: 100%;
+}
+
+.copyright {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyright p {
+  color: #fff;
+  font-size: 0.875rem
+}
+
+
+/* --------------------------------*/
+/*            Responsive           */
+/* --------------------------------*/
+
+@media all and (max-width: 767px) {
+  .domestic-stats {
+    width: 540px;
+  }
+}
+
+@media all and (max-width: 700px) {
+  #region-table {
+    width: 98%;
+  }
+
+  #region-table .name {
+    width: 15%;
+  }
+  
+  #region-table .region_total {
+    width: 31%
+  }
+  
+  #region-table .region_recovered,
+  #region-table .region_critical,
+  #region-table .region_death {
+    width: 18%;
+  }
+}
+
+@media all and (max-width: 569px) {
+
+  .logo p {
+    font-size: 1.375rem;
+    font-weight: 700;
+  }
+
+  .domestic h2,
+  .region h2 {
+    font-size: 1.625rem;
+    font-weight: 700;
+  }
+
+  .domestic-stats {
+    margin: 0 auto;
+    width: 100%;
+    flex-direction: column;
+    align-items:flex-start;
+  }
+  
+  .domestic-stats div {
+    margin: 5px 20px;
+  }
+}
+
+@media all and (max-width: 499px) {
+  
+
+  .chart {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 449px) {
+  .logo p {
+    font-size: 1.25rem;
+    width: 100px;
+  }
+
+  #region-table {
+    font-size: 0.875rem;
+  }
+
+  #region-table .region_total span {
+    margin-left: 0;
+    display: block;
+  }
+
+  #region-table .tbody div p {
+    height: 53px;
+  }
+
+  #region-table .tbody .name p,
+  #region-table .tbody .region_recovered p,
+  #region-table .tbody .region_critical p,
+  #region-table .tbody .region_death p {
+    height: 53px;
+    line-height: 53px;
+    padding: 0;
+  }
+
+
+
+  #region-table .name {
+    width: 12%;
+  }
+  
+  #region-table .region_total {
+    width: 22%
+  }
+  
+  #region-table .region_recovered,
+  #region-table .region_critical,
+  #region-table .region_death {
+    width: 22%;
+  }
+}
