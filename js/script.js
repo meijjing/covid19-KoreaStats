@@ -33,7 +33,9 @@ let dt,
   new_death_case;
 
 // API - domestic
-var domestic_data = document.getElementById("../api_domestic.php");
+var domestic_data = document.getElementById(
+  "https://meijjing.github.io/covid19-KoreaStats/api_domestic.php"
+);
 var xhr = new XMLHttpRequest();
 
 xhr.open("GET", "api_domestic.php");
@@ -173,7 +175,9 @@ const region_name = [],
   region_death = [];
 
 // API - region
-var region_data = document.getElementById("../api_region.php");
+var region_data = document.getElementById(
+  "https://meijjing.github.io/covid19-KoreaStats/api_region.php"
+);
 var xhr1 = new XMLHttpRequest();
 
 xhr1.open("GET", "../api_region.php");
