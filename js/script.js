@@ -3,7 +3,7 @@
 /* ----------------------------------------- */
 
 // all variables elements
-const create_dt = document.querySelector(".create_dt");
+const date_element = document.querySelector(".create-dt .date");
 const total_case_element = document.querySelector(".total-cases .value");
 const new_case_element = document.querySelector(".total-cases .new-value");
 const recovered_case_element = document.querySelector(".recovered .value");
@@ -51,7 +51,7 @@ xhr.send();
 
 function domesticStats() {
   // 기준 일자
-  dt = String(document.getElementsByTagName("createdt")[0].innerText);
+  dt = document.getElementsByTagName("createdt")[0].innerText;
 
   // 오늘 확진자
   total_case = Number(document.getElementsByTagName("decidecnt")[0].innerText);
@@ -110,7 +110,7 @@ function domesticStats() {
 }
 
 function domesticUI() {
-  // create_dt.innerText += dt.toString();
+  date_element.innerText = dt;
   total_case_element.innerText = total_case.toLocaleString();
   new_case_element.innerText = "+ " + new_case.toLocaleString();
   recovered_case_element.innerText = recovered_case.toLocaleString();
@@ -304,3 +304,9 @@ function regionChart() {
     },
   });
 }
+
+// reload
+const reload_btn = document.querySelector(".fa-refresh");
+reload_btn.addEventListener("click", function() {
+  location.reload();
+});

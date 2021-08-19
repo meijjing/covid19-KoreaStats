@@ -130,8 +130,27 @@ main {
   margin-bottom: 10px;
 }
 
-.create_dt {
-  font-size: 0.75rem;
+.domestic .create-dt {
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 0.875rem;
+  margin-bottom: 60px;
+
+  display: flex;
+  align-items: center;
+}
+
+.domestic .create-dt span {
+  margin: 0 4px;
+  color: #eee;
+}
+
+.domestic .fa-refresh::before {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: 5px;
+  color: #03b98c;
 }
 
 .divider {
@@ -140,7 +159,11 @@ main {
   margin: 0 auto;
   background: #ff591d;
   height: 2px;
-  margin-bottom: 60px;
+  margin-bottom: 5px;
+}
+
+.region-report .divider {
+  margin-bottom: 50px;
 }
 
 .domestic-stats {
