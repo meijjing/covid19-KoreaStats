@@ -38,7 +38,7 @@ var xhr = new XMLHttpRequest();
 
 xhr.open(
   "GET",
-  "https://meijjing.github.io/covid19-KoreaStats/api_domestic.php"
+  "http://kmeijing.dothome.co.kr/COVID19_KR_Stats/api_domestic.php"
 );
 xhr.onload = function () {
   var xmlDoc = xhr.responseText;
@@ -181,7 +181,7 @@ var xhr1 = new XMLHttpRequest();
 
 xhr1.open(
   "GET",
-  "https://meijjing.github.io/covid19-KoreaStats/api_region.php"
+  "http://kmeijing.dothome.co.kr/COVID19_KR_Stats/api_region.php"
 );
 xhr1.onload = function () {
   var xmlDoc1 = xhr1.responseText;
