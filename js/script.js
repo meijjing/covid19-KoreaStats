@@ -1,10 +1,9 @@
-
 /* ----------------------------------------- */
 /*                  국내 발생 현황               */
 /* ----------------------------------------- */
 
 // all variables elements
-const create_dt = document.querySelector(".create_dt")
+const create_dt = document.querySelector(".create_dt");
 const total_case_element = document.querySelector(".total-cases .value");
 const new_case_element = document.querySelector(".total-cases .new-value");
 const recovered_case_element = document.querySelector(".recovered .value");
@@ -12,31 +11,32 @@ const new_recovered_case_element = document.querySelector(
   ".recovered .new-value"
 );
 const critical_case_element = document.querySelector(".critical .value");
-const new_critical_case_element = document.querySelector(".critical .new-value");
+const new_critical_case_element = document.querySelector(
+  ".critical .new-value"
+);
 const death_case_element = document.querySelector(".deaths .value");
 const new_death_case_element = document.querySelector(".deaths .new-value");
 const dates = [];
 const two_week_total_cases = [];
-const ctx_domestic = document.getElementById("domestic_stats_chart").getContext("2d");
-
-
+const ctx_domestic = document
+  .getElementById("domestic_stats_chart")
+  .getContext("2d");
 
 let dt,
-total_case,
-new_case,
-recovered_case,
-new_recovered_case,
-critical_case,
-new_critical_case,
-death_case,
-new_death_case;
-
+  total_case,
+  new_case,
+  recovered_case,
+  new_recovered_case,
+  critical_case,
+  new_critical_case,
+  death_case,
+  new_death_case;
 
 // API - domestic
-var domestic_data = document.getElementById("domestic-api");
+var domestic_data = document.getElementById("../api_domestic.php");
 var xhr = new XMLHttpRequest();
 
-xhr.open("GET", "https://meijjing.github.io/covid19-KoreaStats/api_domestic.php");
+xhr.open("GET", "api_domestic.php");
 xhr.onload = function () {
   var xmlDoc = xhr.responseText;
   // console.log(xmlDoc);
@@ -46,9 +46,7 @@ xhr.onload = function () {
 };
 xhr.send();
 
-
 function domesticStats() {
-
   // 기준 일자
   dt = String(document.getElementsByTagName("createdt")[0].innerText);
 
@@ -56,33 +54,43 @@ function domesticStats() {
   total_case = Number(document.getElementsByTagName("decidecnt")[0].innerText);
 
   // 오늘 확진자 증가 수
-  new_case = total_case - Number(document.getElementsByTagName("decidecnt")[1].innerText);
+  new_case =
+    total_case -
+    Number(document.getElementsByTagName("decidecnt")[1].innerText);
 
   // 오늘 완치자 수
-  recovered_case = Number(document.getElementsByTagName("clearcnt")[0].innerText);
+  recovered_case = Number(
+    document.getElementsByTagName("clearcnt")[0].innerText
+  );
 
   // 오늘 완치자 증가 수
   new_recovered_case =
-    recovered_case - Number(document.getElementsByTagName("clearcnt")[1].innerText);
+    recovered_case -
+    Number(document.getElementsByTagName("clearcnt")[1].innerText);
 
   // 오늘 격리자 수
   critical_case = Number(document.getElementsByTagName("carecnt")[0].innerText);
 
   // 오늘 격리자 증감 수
-  new_critical_case = critical_case - Number(document.getElementsByTagName("carecnt")[1].innerText);
+  new_critical_case =
+    critical_case -
+    Number(document.getElementsByTagName("carecnt")[1].innerText);
 
   // 오늘 사망자 수
   death_case = Number(document.getElementsByTagName("deathcnt")[0].innerText);
 
   // 오늘 사망자 증가 수
-  new_death_case = death_case - Number(document.getElementsByTagName("deathcnt")[1].innerText);
+  new_death_case =
+    death_case - Number(document.getElementsByTagName("deathcnt")[1].innerText);
 
   for (let i = 14; i >= 0; i--) {
     // 2주간 날짜
     dates.push(document.getElementsByTagName("statedt")[i].innerText);
 
     // 2주간 확진자 수
-    two_week_total_cases.push(Number(document.getElementsByTagName("decidecnt")[i].innerText));
+    two_week_total_cases.push(
+      Number(document.getElementsByTagName("decidecnt")[i].innerText)
+    );
   }
   console.log(dt);
   console.log(total_case);
@@ -98,13 +106,13 @@ function domesticStats() {
   domesticChart();
 }
 
-
 function domesticUI() {
   // create_dt.innerText += dt.toString();
   total_case_element.innerText = total_case.toLocaleString();
   new_case_element.innerText = "+ " + new_case.toLocaleString();
   recovered_case_element.innerText = recovered_case.toLocaleString();
-  new_recovered_case_element.innerText = "+ " + new_recovered_case.toLocaleString();
+  new_recovered_case_element.innerText =
+    "+ " + new_recovered_case.toLocaleString();
   critical_case_element.innerText = critical_case.toLocaleString();
   // new_critical_case_element.innerText = new_critical_case.toLocaleString();
 
@@ -144,8 +152,6 @@ function domesticChart() {
   });
 }
 
-
-
 /* ----------------------------------------- */
 /*                 도시별 발생 현황              */
 /* ----------------------------------------- */
@@ -154,7 +160,9 @@ const total_cell = document.getElementById("region-total");
 const recovered_cell = document.getElementById("region-recovered");
 const critical_cell = document.getElementById("region-critical");
 const death_cell = document.getElementById("region-death");
-const ctx_region = document.getElementById("region_stats_chart").getContext("2d");
+const ctx_region = document
+  .getElementById("region_stats_chart")
+  .getContext("2d");
 
 const region_name = [],
   region_total = [],
@@ -164,12 +172,11 @@ const region_name = [],
   region_critical = [],
   region_death = [];
 
-
 // API - region
-var region_data = document.getElementById("region-api");
+var region_data = document.getElementById("../api_region.php");
 var xhr1 = new XMLHttpRequest();
 
-xhr1.open("GET", "https://meijjing.github.io/covid19-KoreaStats/api_region.php");
+xhr1.open("GET", "../api_region.php");
 xhr1.onload = function () {
   var xmlDoc1 = xhr1.responseText;
   // console.log(xmlDoc);
@@ -180,7 +187,6 @@ xhr1.onload = function () {
 };
 xhr1.send();
 
-
 // regionStats Function
 function regionStats() {
   for (let i = 17; i >= 1; i--) {
@@ -189,7 +195,9 @@ function regionStats() {
     region_name.push(name);
 
     // 시도별 확진자 수
-    const total = Number(document.getElementsByTagName("defcnt")[i].textContent);
+    const total = Number(
+      document.getElementsByTagName("defcnt")[i].textContent
+    );
     region_total.push(total);
 
     // 시도별 완치자 수
@@ -211,7 +219,6 @@ function regionStats() {
     region_death.push(death);
   }
 
-
   // 시도별 어제 확진자 수
   for (let i = 36; i >= 20; i--) {
     const yesterday_total = Number(
@@ -232,7 +239,9 @@ function regionStats() {
     total_cell.innerHTML += `<p id='${index}'>${value.toLocaleString()}</p>`;
   });
   region_new.forEach((value, index) => {
-    document.getElementById(`${index}`).innerHTML += `<span>(+${value.toLocaleString()})</span>`;
+    document.getElementById(
+      `${index}`
+    ).innerHTML += `<span>(+${value.toLocaleString()})</span>`;
   });
   region_recovered.forEach((value) => {
     recovered_cell.innerHTML += `<p>${value.toLocaleString()}</p>`;
