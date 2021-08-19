@@ -10,7 +10,7 @@
 
   <body>
     <!-- header -->
-    <header>
+    <header class="header">
       <div class="logo">
         <img src="img/logo.png" alt="" />
         <p>COVID-19 STATS</p>
@@ -28,6 +28,7 @@
       <div class="domestic-report">
         <section class="domestic">
           <h2>국내 발생현황</h2>
+          <p class="create_dt"></p>
           <p class="divider"></p>
 
           <div class="domestic-stats">
@@ -89,7 +90,7 @@
           </div>
 
           <div class="chart">
-            <canvas id="axes_line_chart"></canvas>
+            <canvas id="region_stats_chart"></canvas>
           </div>
         </section>
         <!-- region -->
@@ -106,11 +107,11 @@
       </div>
     </footer>
 
+    <div id="domestic-api"></div>
+    <div id="region-api"></div>
+
     <!-- Js -->
     <script src="js/script.js"></script>
-    <script src="js/data.js"></script>
-    <!-- <script type="text/javascript" src="js/xmlToJSON.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pretty-print-json@1.1.0/dist/pretty-print-json.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
   </body>
 </html>

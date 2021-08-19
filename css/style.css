@@ -43,10 +43,16 @@ body {
   }
 }
 
+#domestic-api,
+#region-api {
+  display: none;
+}
+
+
 /* ------------------------------------------------*/
 /*                     header                      */
 /* ------------------------------------------------*/
-header {
+.header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -122,6 +128,10 @@ main {
   color: #fff;
   font-weight: 700;
   margin-bottom: 10px;
+}
+
+.create_dt {
+  font-size: 0.75rem;
 }
 
 .divider {
@@ -272,7 +282,7 @@ main {
 }
 
 #region-table .tbody div p:nth-child(2n) {
-  background-color : rgba(58, 58, 58, 0.6);
+  background-color: rgba(58, 58, 58, 0.6);
 }
 
 #region-table .region_recovered {
@@ -346,11 +356,11 @@ footer {
   #region-table .name {
     width: 15%;
   }
-  
+
   #region-table .region_total {
     width: 31%
   }
-  
+
   #region-table .region_recovered,
   #region-table .region_critical,
   #region-table .region_death {
@@ -375,16 +385,16 @@ footer {
     margin: 0 auto;
     width: 100%;
     flex-direction: column;
-    align-items:flex-start;
+    align-items: flex-start;
   }
-  
+
   .domestic-stats div {
     margin: 5px 20px;
   }
 }
 
 @media all and (max-width: 499px) {
-  
+
 
   .chart {
     width: 100%;
@@ -424,11 +434,11 @@ footer {
   #region-table .name {
     width: 12%;
   }
-  
+
   #region-table .region_total {
     width: 22%
   }
-  
+
   #region-table .region_recovered,
   #region-table .region_critical,
   #region-table .region_death {
