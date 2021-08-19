@@ -33,12 +33,13 @@ let dt,
   new_death_case;
 
 // API - domestic
-var domestic_data = document.getElementById(
-  "https://meijjing.github.io/covid19-KoreaStats/api_domestic.php"
-);
+var domestic_data = document.getElementById("domestic-api");
 var xhr = new XMLHttpRequest();
 
-xhr.open("GET", "api_domestic.php");
+xhr.open(
+  "GET",
+  "http://kmeijing.dothome.co.kr/COVID19_KR_Stats/api_domestic.php"
+);
 xhr.onload = function () {
   var xmlDoc = xhr.responseText;
   // console.log(xmlDoc);
@@ -175,12 +176,13 @@ const region_name = [],
   region_death = [];
 
 // API - region
-var region_data = document.getElementById(
-  "https://meijjing.github.io/covid19-KoreaStats/api_region.php"
-);
+var region_data = document.getElementById("region-api");
 var xhr1 = new XMLHttpRequest();
 
-xhr1.open("GET", "../api_region.php");
+xhr1.open(
+  "GET",
+  "http://kmeijing.dothome.co.kr/COVID19_KR_Stats/api_region.php"
+);
 xhr1.onload = function () {
   var xmlDoc1 = xhr1.responseText;
   // console.log(xmlDoc);
