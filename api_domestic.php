@@ -8,8 +8,8 @@ $url = 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStat
 $queryParams = '?' . urlencode('ServiceKey') . '=TAdLe2Q%2FHUYZwzjdBvhvsJmf20BQxyX4eCCuHh9AEU3SV55TkrlsyMAjb5hR96dr%2B5tC4HQBk4vR5NMZ%2F27GdA%3D%3D'; /*Service Key*/
 $queryParams .= '&' . urlencode('pageNo') . '=' . urlencode('1'); /**/
 $queryParams .= '&' . urlencode('numOfRows') . '=' . urlencode('10'); /**/
-$queryParams .= '&' . urlencode('startCreateDt') . '=' . urlencode('20210801'); /**/
-$queryParams .= '&' . urlencode('endCreateDt') . '=' . urlencode('20210819'); /**/
+$queryParams .= '&' . urlencode('startCreateDt') . '=' . urlencode('-10'); /**/
+// $queryParams .= '&' . urlencode('endCreateDt') . '=' . urlencode('20210819'); /**/
 
 
 curl_setopt($ch, CURLOPT_URL, $url . $queryParams);
