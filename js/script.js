@@ -3,6 +3,8 @@
 /* ----------------------------------------- */
 
 // all variables elements
+const error_msg = document.querySelector('.error_msg');
+const main = document.getElementById('main');
 const date_element = document.querySelector(".create-dt .date");
 const total_case_element = document.querySelector(".total-cases .value");
 const new_case_element = document.querySelector(".total-cases .new-value");
@@ -32,6 +34,11 @@ let dt,
   death_case,
   new_death_case;
 
+error_msg.style.display = "none";
+
+
+
+
 // API - domestic
 var domestic_data = document.getElementById("domestic-api");
 var xhr = new XMLHttpRequest();
@@ -39,74 +46,92 @@ var xhr = new XMLHttpRequest();
 xhr.open(
   "GET",
   "http://kmeijing.dothome.co.kr/COVID19_KR_Stats/api_domestic.php"
+  // "http://localhost:8080/COVID19_KR_Stats/api_domestic.php"
 );
+
 xhr.onload = function () {
-  var xmlDoc = xhr.responseText;
+  if (xhr.status >= 200 && xhr.status < 400) {
+    var xmlDoc = xhr.responseText;
   // console.log(xmlDoc);
   domestic_data.innerHTML += xmlDoc;
   domestic_data.style.display = "none";
   domesticStats();
+  } else {
+    main.style.display = "none";
+    error_msg.style.display = "block";
+  }
 };
+
+xhr.onerror = function () {
+  xhr = new XMLHttpRequest();
+  xhr.open()
+}
+
 xhr.send();
 
 function domesticStats() {
-  // 기준 일자
-  dt = document.getElementsByTagName("createdt")[0].innerText;
 
-  // 오늘 확진자
-  total_case = Number(document.getElementsByTagName("decidecnt")[0].innerText);
+    main.style.display = "block";
+    error_msg.style.display = "none";
 
-  // 오늘 확진자 증가 수
-  new_case =
-    total_case -
-    Number(document.getElementsByTagName("decidecnt")[1].innerText);
+    
+    // 기준 일자
+    dt = document.getElementsByTagName("createdt")[0].innerText;
 
-  // 오늘 완치자 수
-  recovered_case = Number(
-    document.getElementsByTagName("clearcnt")[0].innerText
-  );
+    // 오늘 확진자
+    total_case = Number(document.getElementsByTagName("decidecnt")[0].innerText);
 
-  // 오늘 완치자 증가 수
-  new_recovered_case =
-    recovered_case -
-    Number(document.getElementsByTagName("clearcnt")[1].innerText);
+    // 오늘 확진자 증가 수
+    new_case =
+      total_case -
+      Number(document.getElementsByTagName("decidecnt")[1].innerText);
 
-  // 오늘 격리자 수
-  critical_case = Number(document.getElementsByTagName("carecnt")[0].innerText);
-
-  // 오늘 격리자 증감 수
-  new_critical_case =
-    critical_case -
-    Number(document.getElementsByTagName("carecnt")[1].innerText);
-
-  // 오늘 사망자 수
-  death_case = Number(document.getElementsByTagName("deathcnt")[0].innerText);
-
-  // 오늘 사망자 증가 수
-  new_death_case =
-    death_case - Number(document.getElementsByTagName("deathcnt")[1].innerText);
-
-  for (let i = 14; i >= 0; i--) {
-    // 2주간 날짜
-    dates.push(document.getElementsByTagName("statedt")[i].innerText);
-
-    // 2주간 확진자 수
-    two_week_total_cases.push(
-      Number(document.getElementsByTagName("decidecnt")[i].innerText)
+    // 오늘 완치자 수
+    recovered_case = Number(
+      document.getElementsByTagName("clearcnt")[0].innerText
     );
-  }
-  console.log(dt);
-  console.log(total_case);
-  console.log(new_case);
-  console.log(recovered_case);
-  console.log(new_recovered_case);
-  console.log(critical_case);
-  console.log(new_critical_case);
-  console.log(death_case);
-  console.log(new_death_case);
 
-  domesticUI();
-  domesticChart();
+    // 오늘 완치자 증가 수
+    new_recovered_case =
+      recovered_case -
+      Number(document.getElementsByTagName("clearcnt")[1].innerText);
+
+    // 오늘 격리자 수
+    critical_case = Number(document.getElementsByTagName("carecnt")[0].innerText);
+
+    // 오늘 격리자 증감 수
+    new_critical_case =
+      critical_case -
+      Number(document.getElementsByTagName("carecnt")[1].innerText);
+
+    // 오늘 사망자 수
+    death_case = Number(document.getElementsByTagName("deathcnt")[0].innerText);
+
+    // 오늘 사망자 증가 수
+    new_death_case =
+      death_case - Number(document.getElementsByTagName("deathcnt")[1].innerText);
+
+    for (let i = 14; i >= 0; i--) {
+      // 2주간 날짜
+      dates.push(document.getElementsByTagName("statedt")[i].innerText);
+
+      // 2주간 확진자 수
+      two_week_total_cases.push(
+        Number(document.getElementsByTagName("decidecnt")[i].innerText)
+      );
+    }
+    // console.log(dt);
+    // console.log(total_case);
+    // console.log(new_case);
+    // console.log(recovered_case);
+    // console.log(new_recovered_case);
+    // console.log(critical_case);
+    // console.log(new_critical_case);
+    // console.log(death_case);
+    // console.log(new_death_case);
+
+    domesticUI();
+    domesticChart();
 }
 
 function domesticUI() {
@@ -182,15 +207,30 @@ var xhr1 = new XMLHttpRequest();
 xhr1.open(
   "GET",
   "http://kmeijing.dothome.co.kr/COVID19_KR_Stats/api_region.php"
+  // "http://localhost:8080/COVID19_KR_Stats/api_region.php"
+
 );
+
 xhr1.onload = function () {
-  var xmlDoc1 = xhr1.responseText;
-  // console.log(xmlDoc);
-  region_data.innerHTML += xmlDoc1;
-  region_data.style.display = "none";
-  regionStats();
-  regionChart();
+  if (xhr1.status >= 200 && xhr.status < 400) {
+    var xmlDoc1 = xhr1.responseText;
+    // console.log(xmlDoc);
+    region_data.innerHTML += xmlDoc1;
+    region_data.style.display = "none";
+    regionStats();
+    regionChart();
+  } else {
+    console.log('error');
+    main.style.display = "none";
+    error_msg.style.display = "block";
+  }
 };
+
+xhr1.onerror = function () {
+  xhr1 = new XMLHttpRequest();
+  xhr1.open()
+}
+
 xhr1.send();
 
 // regionStats Function
@@ -259,9 +299,9 @@ function regionStats() {
     death_cell.innerHTML += `<p>${value.toLocaleString()}</p>`;
   });
 
-  console.log(region_total);
-  console.log(region_recovered);
-  console.log(region_death);
+  // console.log(region_total);
+  // console.log(region_recovered);
+  // console.log(region_death);
 }
 
 // regionChart function
@@ -305,8 +345,10 @@ function regionChart() {
   });
 }
 
+
+
 // reload
 const reload_btn = document.querySelector(".fa-refresh");
 reload_btn.addEventListener("click", function() {
   location.reload();
-});
+})

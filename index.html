@@ -33,11 +33,12 @@
     </header>
 
     <!-- main -->
-    <main>
+    <div class="error_msg">새로고침 해주세요.<i class="fa fa-refresh"></i></div>
+    <main id="main">
       <div class="domestic-report">
         <section class="domestic">
           <h2>국내 발생현황</h2>
-          <p class="create_dt"></p>
+
           <p class="divider"></p>
           <p class="create-dt">
             ( <span class="date"></span><span> 기준</span> )
@@ -84,7 +85,7 @@
           <h2>지역별 발생현황</h2>
           <p class="divider"></p>
 
-          <div id="region-table">
+          <div id="region-table" border="1">
             <div class="thead">
               <div class="name">지역</div>
               <div class="region_total">확진자 수<span>(증가 수)</span></div>
